@@ -27,13 +27,13 @@ interface PointSystemDao {
     fun observeById(id: UUID): Flow<PointSystemEntity>
 
     /**
-     * Observes all point systems with credit cards associated to them from the point system table.
+     * Observes all point systems with credit card IDs associated to them from the point system table.
      *
-     * @return all point systems with credit cards associated to them.
+     * @return all point systems with credit card IDs associated to them.
      */
     @Transaction
     @Query("SELECT * FROM pointSystem WHERE id = :id")
-    fun observePointSystemWithCreditCards(id: UUID): Flow<PointSystemWithCreditCards>
+    fun observePointSystemWithCreditCards(id: UUID): Flow<PointSystemWithCreditCardIds>
 
     /**
      * Select all point systems from the point system table.
@@ -53,13 +53,13 @@ interface PointSystemDao {
     suspend fun getById(id: UUID): PointSystemEntity?
 
     /**
-     * Select all point systems with credit cards associated to them from the point system table.
+     * Select all point systems with credit card IDs associated to them from the point system table.
      *
-     * @return all point systems with credit cards associated to them.
+     * @return all point systems with credit card IDs associated to them.
      */
     @Transaction
     @Query("SELECT * FROM pointSystem WHERE id = :id")
-    suspend fun getPointSystemWithCreditCards(id: UUID): PointSystemWithCreditCards?
+    suspend fun getPointSystemWithCreditCards(id: UUID): PointSystemWithCreditCardIds?
 
     /**
      * Insert or update a point system in the database. If a point system already exists, replace it.
@@ -91,4 +91,13 @@ interface PointSystemDao {
      */
     @Query("DELETE FROM pointSystem")
     suspend fun deleteAll()
+
+    /**
+     * Check if the point system of a certain id exists.
+     *
+     * @param id id of the point system.
+     * @return true if exists, false otherwise.
+     */
+    @Query("SELECT EXISTS(SELECT * FROM pointSystem WHERE id = :id)")
+    suspend fun exist(id: UUID): Boolean
 }

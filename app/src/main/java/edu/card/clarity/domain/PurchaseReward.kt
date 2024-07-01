@@ -1,11 +1,12 @@
 package edu.card.clarity.domain
 
-data class PurchaseReturn(
-    val applicablePurchaseType: PurchaseType,
-    val returnFactor: Float
-) {
+import edu.card.clarity.enums.PurchaseType
 
+data class PurchaseReward(
+    val applicablePurchaseType: PurchaseType,
+    val rewardFactor: Float
+) {
     fun getReturnAmount(purchase: Purchase): Float {
-        return purchase.amount * returnFactor
+        return purchase.total * rewardFactor
     }
 }
