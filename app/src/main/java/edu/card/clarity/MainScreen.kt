@@ -1,13 +1,8 @@
 package edu.card.clarity
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -25,7 +20,8 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import edu.card.clarity.presentation.BottomNavBar
+import edu.card.clarity.presentation.navigation.BottomNavBar
+import edu.card.clarity.presentation.navigation.BottomNavGraph
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 
